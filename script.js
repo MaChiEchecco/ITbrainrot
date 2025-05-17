@@ -5,7 +5,7 @@ const cards = {
   "Tung Tung Sahur": { hp: 160, atk: 30, ability: { type: "doubleAttack", chance: 0.5 } },
   "Bombardero Crocodilo": { hp: 150, atk: 40 },
   "Glorbo Fruttodrillo": { hp: 220, atk: 10, ability: { type: "reduceSelfDamageOnAttack", value: 10 } },
-  "Brr Brr Patapim": { hp: 180, atk: 15, ability: { type: "healAllies", value: 5 } },
+  "Brr Brr Patapim": { hp: 180, atk: 15, ability: { type: "healAllies", value: 1 } },
   "Vacca Saturno S.": { hp: 110, atk: 35 },
   "Lirili Larila": { hp: 230, atk: 10, ability: { type: "giveBackDamage", value: 10 } },
   "Trippi Troppi": { hp: 300, atk: 5 },
@@ -222,14 +222,16 @@ function usaAbilitaPatapim() {
     return;
   }
 
+  const patapim = cards["Brr Brr Patapim"];
+  const healValue = patapim.ability?.value || 1; // fallback di sicurezza
+
   Object.keys(cards).forEach((name) => {
     const card = cards[name];
 
-    // Solo se la carta non è morta
     if (card.hp > 0) {
-      card.hp += 1;
+      card.hp += healValue;
 
-      // Aggiorna anche la UI, se la carta è presente nella pagina
+      // Aggiorna la UI
       const input = document.querySelector(`input[value="${name}"]`);
       if (input) {
         const label = input.closest("label");
@@ -244,9 +246,8 @@ function usaAbilitaPatapim() {
   patapimAbilitaUsata = true;
 
   document.getElementById("attackMessage").textContent =
-    "🌿 Brr Brr Patapim ha curato tutti gli alleati di 5 HP!";
+    `🌿 Brr Brr Patapim ha curato tutti gli alleati di ${healValue} HP!`;
 }
-
 function avanzaTurno() {
   // Reset delle abilità e stato del turno
   patapimAbilitaUsata = false;
@@ -257,38 +258,25 @@ function avanzaTurno() {
 
 // Tabelle con DataTables
 const tbody = document.querySelector('#cardTable tbody');
+if(tbody) {
+    for (const [name, stats] of Object.entries(cards)) {
+      const row = document.createElement('tr');
+      
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${stats.hp}</td>
+        <td>${stats.atk}</td>
+      `;
 
-for (const [name, stats] of Object.entries(cards)) {
-  const row = document.createElement('tr');
-  
-  row.innerHTML = `
-    <td>${name}</td>
-    <td>${stats.hp}</td>
-    <td>${stats.atk}</td>
-  `;
+      tbody.appendChild(row);
+    }
 
-  tbody.appendChild(row);
+    // Inizializza DataTables per la tabella
+    $(document).ready(function() {
+      $('#cardTable').DataTable();
+    });
 }
 
-// Inizializza DataTables per la tabella
-$(document).ready(function() {
-  $('#cardTable').DataTable();
-});
-
-// Gestisci la selezione della carta
-document.querySelectorAll('input[name="selectedCard"]').forEach((input) => {
-  input.addEventListener('change', () => {
-    // Rimuovi la classe "selected" da tutte le carte
-    document.querySelectorAll('.card').forEach(card => card.classList.remove('selected'));
-    
-    // Aggiungi la classe "selected" alla carta selezionata
-    const selectedCard = document.querySelector(`#card-tralalero`);
-    selectedCard.classList.add('selected');
-
-    // Esegui l'animazione di elettricità
-    triggerElectricity();
-  });
-});
 
 // Gestisci la selezione della carta
 document.querySelectorAll('input[name="selectedCard"]').forEach((input) => {

@@ -73,7 +73,7 @@ label:hover img {
   width: 500px;
   height: 600px;
   border: 4px solid #000000;
-  background: linear-gradient(45deg, red, rgb(255, 255, 255), rgb(0, 187, 0));
+  background: url(imagini/sparta.png);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -391,7 +391,7 @@ body {
 /* Tavolo di gioco */
 #playerDeckArea {
   padding: 20px;
-  background-image: url('imagini/tavolo_di_gioco.png');  /* Aggiungi un'immagine che rappresenta il tavolo */
+  background-image: url('imagini/tavolo\ di\ gioco.png');  /* Aggiungi un'immagine che rappresenta il tavolo */
   background-size: cover;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -458,4 +458,82 @@ body {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.2); opacity: 0.5; }
   100% { transform: scale(1); opacity: 1; }
+}
+
+/* Stile generale per il modulo */
+form {
+    max-width: 800px; /* Tre volte più stretto */
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ff0000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center; /* Allinea il testo al centro */
+}
+
+
+/* Campo di testo */
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 10px; /* Ridotto per adattarsi */
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Focus sui campi di input */
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Area di testo (textarea) */
+textarea {
+   min-width: 600px; 
+  min-height: 150px; /* Ridotto l'altezza della textarea */
+    font-size: 10px; /* Font più piccolo */
+}
+
+/* Pulsante */
+button {
+    padding: 4px 8px; /* Ridotto il padding */
+    background-color: #000dff;
+    color: white;
+    font-size: 10px; /* Font ridotto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover sul pulsante */
+button:hover {
+    background-color: #00eaff;
+}
+
+/* Stile per il selettore di voto */
+select {
+    font-size: 10px; /* Font ridotto */
+}
+
+/* Aggiungi un po' di spazio tra gli elementi */
+form > * {
+    margin-bottom: 8px;
+}
+
+/* Contenitore centrale */
+.container {
+    display: flex;
+    justify-content: center; /* Allinea orizzontalmente */
+    align-items: center; /* Allinea verticalmente */
+    height: 100vh; /* Altezza della pagina (o qualsiasi altro contenitore) */
 }
