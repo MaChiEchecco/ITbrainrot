@@ -248,7 +248,7 @@ label:hover img {
 
 /* Link che cambia colore */
 .link-gioca {
-  font-size: 100px;
+  font-size: 50px;
   text-decoration: none;
   font-weight: bold;
   animation: cambiaColore 5s infinite;
@@ -537,3 +537,4 @@ form > * {
     align-items: center; /* Allinea verticalmente */
     height: 100vh; /* Altezza della pagina (o qualsiasi altro contenitore) */
 }
+

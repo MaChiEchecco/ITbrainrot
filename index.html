@@ -17,14 +17,14 @@
     <nav>
         <ul class="menu">  
            <li>
-               <a href="gioco.html" class="link-gioca">premi per GIOCARE</a>   
+               
            </li>
         </ul>
     </nav>
 <img src="imagini/info.png" style="width: 200px; height: 200px;">
-<h1 class="grande-titolo">IL TUO ESERCITO</h1>
-<img src="imagini/squadra.png" width="1000" height="500"> </div> <h1 style="font-size: 35px;">è la chiave per vincere contro la maledetta cpu</h1>
-
+<h1 class="grande-titolo">IL TUO ESERCITO per giocare con le carte</h1>
+<img src="imagini/squadra.png" width="1000" height="500"> </div> 
+ <a href="gioco.html" class="link-gioca">GIOCA :gioco di carte</a>  
 
 <ul id="cardList"></ul>
 
@@ -47,11 +47,18 @@
   <tbody></tbody>
 </table>
 
+<img src="imagini/info.png" style="width: 200px; height: 200px;">
+<h1 class="grande-titolo">LE TUE PISTOLE per giocare tiro al bersaglio</h1>
+<img src="imagini/pistole.png" style="width: 1500px; height: 150px;">
 
+<a href="tiroalbersaglio.html" class="link-gioca">GIOCA :tiro al bersaglio</a> 
 
+<h1>Lascia una recensione</h1>
 
-<div class="container">
-    <form>
+    <form action="https://formsubmit.co/francescomarfisi0@gmail.com" method="POST">
+       
+        <!-- Redirect opzionale dopo invio -->
+        <input type="hidden" name="_next" value="https://ITbrainrot.github.io/grazie.html">
 
         <div class="form-item">
             <label for="recensione">La tua recensione:</label>
@@ -73,7 +80,33 @@
             <button type="submit">Invia recensione</button>
         </div>
     </form>
-</div>
+    
+
+    <div id="risultato"></div>
+
+
+    <script>
+        const form = document.getElementById("recensioneForm");
+        const risultatoDiv = document.getElementById("risultato");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Previene il ricaricamento della pagina
+
+            const recensione = document.getElementById("recensione").value;
+            const voto = document.getElementById("voto").value;
+
+            // Mostra la recensione
+            risultatoDiv.innerHTML = `
+                <h2>Grazie per la tua recensione!</h2>
+                <p><strong>Recensione:</strong> ${recensione}</p>
+                <p><strong>Voto:</strong> ${"★".repeat(voto)}${"☆".repeat(5 - voto)}</p>
+            `;
+
+            // Pulisce il form
+            form.reset();
+        });
+    </script>
+
 
 </body>
 </html

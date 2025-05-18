@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gioco Tiro al Bersaglio</title>
+  <link rel="icon" href="imagini/bersaglio.ico" type="image/x-icon">    
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      height: 100vh;
+      position: relative;
+      font-family: Arial, sans-serif;
+      cursor: crosshair;
+    }
+
+    .link-gioca {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ffffffcc;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    .gun-container {
+      position: absolute;
+      bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gun {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    .gun-name {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #333;
+    }
+
+ .bullet {
+  position: absolute;
+  width: 40px; /* aumenta la dimensione se serve */
+  height: 40px;
+  background-size: contain; /* mostra l’intera immagine */
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border-radius: 50%; */ /* rimuovilo se non vuoi un proiettile tondo */
+}
+
+    .target {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-image: url("imagini/colpiscilo.png");
+      background-size: cover;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="link-gioca">
+    <img src="imagini/home.png" style="height: 70px; width:70px;">
+  </a>
+
+  <div id="target" class="target"></div>
+
+  <label>
+    <div style="margin-top: 100px;"><h1>----------- PREMI su refresh per cambiare pistola</h1></div>
+  </label>
+
+  <!-- Pistole con nomi -->
+  <div class="gun-container" style="left: 5%;">
+    <img class="gun" id="gun1" src="imagini/vacca saturno s.png" alt="Pistola 1"/>
+    <span class="gun-name">vacca saturno s.</span>
+  </div>
+  <div class="gun-container" style="left: 15%;">
+    <img class="gun" id="gun2" src="imagini/glorbofruttodrillo.png" alt="Pistola 2"/>
+    <span class="gun-name">glorbo fruttodrillo</span>
+  </div>
+  <div class="gun-container" style="left: 25%;">
+    <img class="gun" id="gun3" src="imagini/oi oi oi bondrito bandito.png" alt="Pistola 3"/>
+    <span class="gun-name">oi oi oi bondrito bandito</span>
+  </div>
+  <div class="gun-container" style="left: 35%;">
+    <img class="gun" id="gun4" src="imagini/trippi troppi.png" alt="Pistola 4"/>
+    <span class="gun-name">trippi troppi</span>
+  </div>
+  <div class="gun-container" style="left: 45%;">
+    <img class="gun" id="gun5" src="imagini/brr brr patapim .png" alt="Pistola 5"/>
+    <span class="gun-name">brr brr patapim</span>
+  </div>
+  <div class="gun-container" style="left: 55%;">
+    <img class="gun" id="gun6" src="imagini/lirili larila.png" alt="Pistola 6"/>
+    <span class="gun-name">lirili larila</span>
+  </div>
+  <div class="gun-container" style="left: 65%;">
+    <img class="gun" id="gun7" src="imagini/tung tung sahur.png" alt="Pistola 7"/>
+    <span class="gun-name">tung tung sahur</span>
+  </div>
+  <div class="gun-container" style="left: 75%;">
+    <img class="gun" id="gun8" src="imagini/tralalero tralala.png" alt="Pistola 8"/>
+    <span class="gun-name">tralalero tralala</span>
+  </div>
+  <div class="gun-container" style="left: 85%;">
+    <img class="gun" id="gun9" src="imagini/mateo.png" alt="Pistola 9"/>
+    <span class="gun-name">mateo</span>
+  </div>
+  <div class="gun-container" style="left: 95%;">
+    <img class="gun" id="gun10" src="imagini/bombardero crocodilo.png" alt="Pistola 10"/>
+    <span class="gun-name">bombardero crocodilo</span>
+  </div>
+
+<script>
+  const target = document.getElementById('target');
+  let activeGun = null;
+  let activeBulletImage = "";
+  let isReloading = false;
+
+  // Movimento continuo del bersaglio
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+  let vx = 1.2;
+  let vy = 0.9;
+
+  function moveTarget() {
+    x += vx;
+    y += vy;
+    if (x < 0 || x > window.innerWidth - 100) vx *= -1;
+    if (y < 0 || y > window.innerHeight - 100) vy *= -1;
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
+    requestAnimationFrame(moveTarget);
+  }
+
+  moveTarget();
+// Pistole e relativi proiettili
+const guns = [
+  { el: document.getElementById('gun1'), bulletImg: "imagini/saturno.png" },
+  { el: document.getElementById('gun2'), bulletImg: "imagini/anguria.png" },
+  { el: document.getElementById('gun3'), bulletImg: "imagini/proiettile.png" },
+  { el: document.getElementById('gun4'), bulletImg: "imagini/bistecca.png" },
+  { el: document.getElementById('gun5'), bulletImg: "imagini/foglia.png" },
+  { el: document.getElementById('gun6'), bulletImg: "imagini/cactus.png" },
+  { el: document.getElementById('gun7'), bulletImg: "imagini/mazza.png" },
+  { el: document.getElementById('gun8'), bulletImg: "imagini/onda.png" },
+  { el: document.getElementById('gun9'), bulletImg: "imagini/albero.png" },
+  { el: document.getElementById('gun10'), bulletImg: "imagini/bomba.png" }
+];
+
+  function showRandomGun() {
+    // Nasconde tutte le pistole
+    guns.forEach(g => g.el.style.display = 'none');
+
+    // Mostra una pistola a caso
+    const randomGun = guns[Math.floor(Math.random() * guns.length)];
+    activeGun = randomGun.el;
+    activeBulletImage = randomGun.bulletImg;
+    activeGun.style.display = 'block';
+  }
+
+  showRandomGun();
+
+  // Gestione dello sparo
+  document.addEventListener("click", function (e) {
+    if (isReloading || !activeGun) return;
+
+    const bullet = document.createElement("div");
+    bullet.className = "bullet";
+    bullet.style.backgroundImage = `url(${activeBulletImage})`;
+    document.body.appendChild(bullet);
+
+    const gunRect = activeGun.getBoundingClientRect();
+    let bx = gunRect.left + gunRect.width / 2;
+    let by = gunRect.top;
+    bullet.style.left = `${bx}px`;
+    bullet.style.top = `${by}px`;
+
+    const dx = e.clientX - bx;
+    const dy = e.clientY - by;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const speed = 7;
+    const vx = (dx / distance) * speed;
+    const vy = (dy / distance) * speed;
+
+    function moveBullet() {
+      bx += vx;
+      by += vy;
+      bullet.style.left = `${bx}px`;
+      bullet.style.top = `${by}px`;
+
+      const tRect = target.getBoundingClientRect();
+      if (
+        bx > tRect.left && bx < tRect.right &&
+        by > tRect.top && by < tRect.bottom
+      ) {
+        bullet.remove();
+        alert("Colpito!");
+      } else if (
+        bx < 0 || bx > window.innerWidth ||
+        by < 0 || by > window.innerHeight
+      ) {
+        bullet.remove();
+      } else {
+        requestAnimationFrame(moveBullet);
+      }
+    }
+
+    moveBullet();
+
+    // Tempo di ricarica: 1 secondo
+    isReloading = true;
+    setTimeout(() => {
+      isReloading = false;
+    }, 1000);
+  });
+</script>
