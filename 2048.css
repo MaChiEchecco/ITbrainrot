@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #faf8ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#game {
+  background: #bbada0;
+  padding: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  grid-gap: 10px;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
+  background: #cdc1b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ff0000;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  user-select: none;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.tile-2    { background-image: url("/imagini/mateo.png"); }
+.tile-4    { background-image: url("/imagini/trippi\ troppi.png"); }
+.tile-8    { background-image: url("/imagini/udin\ din\ dun.png"); }
+.tile-16   { background-image: url("/imagini/spioniro\ gubino.png"); }
+.tile-32   { background-image: url("/imagini/lirili\ larila.png"); }
+.tile-64   { background-image: url("/imagini/vacca\ saturno\ s.png"); }
+.tile-128  { background-image: url("/imagini/glorbofruttodrillo.png"); }
+.tile-256  { background-image: url("/imagini/brr\ brr\ patapim.png"); }
+.tile-512  { background-image: url("/imagini/tung\ tung\ sahur.png"); }
+.tile-1024 { background-image: url("/imagini/bombardero\ crocodilo.png"); }
+.tile-2048 { background-image: url("/imagini/tralalero\ tralala.png"); }
