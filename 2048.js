@@ -1,5 +1,6 @@
 const game = document.getElementById('game');
 let board = [];
+let lastNewTile = null; // aggiunto qui
 
 function initBoard() {
   board = Array(4).fill(null).map(() => Array(4).fill(0));
@@ -17,23 +18,27 @@ function addTile() {
   if (empty.length === 0) return false;
   let [i, j] = empty[Math.floor(Math.random() * empty.length)];
   board[i][j] = Math.random() < 0.9 ? 2 : 4;
+  lastNewTile = [i, j]; // memorizza la nuova tile
   return true;
 }
 
 function render() {
   game.innerHTML = '';
-  board.forEach(row => {
-    row.forEach(cell => {
+  board.forEach((row, i) => {
+    row.forEach((cell, j) => {
       const tile = document.createElement('div');
       tile.className = `tile tile-${cell}`;
-      tile.textContent = cell !== 0 ? cell : '';
+      if (cell !== 0) tile.textContent = cell;
+      if (lastNewTile && lastNewTile[0] === i && lastNewTile[1] === j) {
+        tile.classList.add('new-tile');
+      }
       game.appendChild(tile);
     });
   });
+  lastNewTile = null; // reset dopo render
 }
 
 function slide(row) {
-  // sposta tutti i numeri a sinistra e rimuove zeri
   let arr = row.filter(v => v !== 0);
   for (let i = 0; i < arr.length - 1; i++) {
     if (arr[i] === arr[i + 1]) {
@@ -58,7 +63,6 @@ function moveLeft() {
 }
 
 function rotateRight(matrix) {
-  // ruota 90 gradi a destra
   let N = matrix.length;
   let ret = Array(N).fill(null).map(() => Array(N).fill(0));
   for (let i = 0; i < N; i++)
@@ -68,7 +72,6 @@ function rotateRight(matrix) {
 }
 
 function rotateLeft(matrix) {
-  // ruota 90 gradi a sinistra
   let N = matrix.length;
   let ret = Array(N).fill(null).map(() => Array(N).fill(0));
   for (let i = 0; i < N; i++)
@@ -114,7 +117,6 @@ function move(direction) {
 }
 
 function checkGameOver() {
-  // Controlla se non ci sono mosse possibili
   for(let i=0; i<4; i++){
     for(let j=0; j<4; j++){
       if(board[i][j] === 0) return false;

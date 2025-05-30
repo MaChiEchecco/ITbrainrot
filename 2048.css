@@ -36,6 +36,22 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.tile.new-tile {
+  animation: neon-glow 0.8s ease-out;
+}
+
+@keyframes neon-glow {
+  0% {
+    box-shadow: 0 0 20px 5px #0ff, 0 0 40px 10px #0ff;
+    transform: scale(1.2);
+  }
+  100% {
+    box-shadow: none;
+    transform: scale(1);
+  }
+}
+
 .tile-2    { background-image: url("/imagini/mateo.png"); }
 .tile-4    { background-image: url("/imagini/trippi\ troppi.png"); }
 .tile-8    { background-image: url("/imagini/udin\ din\ dun.png"); }
