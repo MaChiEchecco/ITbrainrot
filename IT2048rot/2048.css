@@ -52,14 +52,14 @@ body {
   }
 }
 
-.tile-2    { background-image: url("/imagini/mateo.png"); }
-.tile-4    { background-image: url("/imagini/trippi\ troppi.png"); }
-.tile-8    { background-image: url("/imagini/udin\ din\ dun.png"); }
-.tile-16   { background-image: url("/imagini/spioniro\ gubino.png"); }
-.tile-32   { background-image: url("/imagini/lirili\ larila.png"); }
-.tile-64   { background-image: url("/imagini/vacca\ saturno\ s.png"); }
-.tile-128  { background-image: url("/imagini/glorbofruttodrillo.png"); }
-.tile-256  { background-image: url("/imagini/brr\ brr\ patapim.png"); }
-.tile-512  { background-image: url("/imagini/tung\ tung\ sahur.png"); }
-.tile-1024 { background-image: url("/imagini/bombardero\ crocodilo.png"); }
-.tile-2048 { background-image: url("/imagini/tralalero\ tralala.png"); }
+.tile-2    { background-image: url("imagini2048/mateo.png"); }
+.tile-4    { background-image: url("imagini2048/trippi troppi.png"); }
+.tile-8    { background-image: url("imagini2048/udin din dun.png"); }
+.tile-16   { background-image: url("imagini2048/spioniro gubino.png"); }
+.tile-32   { background-image: url("imagini2048/lirili larila.png"); }
+.tile-64   { background-image: url("imagini2048/vacca saturno s.png"); }
+.tile-128  { background-image: url("imagini2048/glorbofruttodrillo.png"); }
+.tile-256  { background-image: url("imagini2048/brr brr patapim.png"); }
+.tile-512  { background-image: url("imagini2048/tung tung sahur.png"); }
+.tile-1024 { background-image: url("imagini2048/bombardero crocodilo.png"); }
+.tile-2048 { background-image: url("imagini2048/tralalero tralala.png"); }
