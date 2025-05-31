@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La tua Collezione</title>
+  <link rel="stylesheet" href="pokemonrot.css">
+  <link rel="icon" href="imaginirot/pokemonrotico.ico" type="image/x-icon">
+  <script src="collezione.js" defer></script> <!-- Collega il JS -->
+</head>
+<body>
+  <header>
+    <a href="/index.html" class="link-gioca">
+      <img src="imaginirot/home.png" alt="Home" style="height: 70px; width:70px;">
+    </a>
+  </header>
+
+  <main>
+    <!-- Contenitore dove verranno caricate le carte -->
+    <div id="collection"></div>
+
+    <!-- Sezione per visualizzare il totale dei duplicati -->
+    <div id="duplicates-count"></div>
+
+<div id="deckCounter">Carte nel mazzo: 0/20</div>
+<div id="collection" class="collection-grid"></div>
+<button onclick="saveDeck()">Salva Mazzo</button>
+
+
+
+  </main>
+</body>
+</html>

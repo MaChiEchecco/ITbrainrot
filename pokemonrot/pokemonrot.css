@@ -1,0 +1,154 @@
+/* Impostazioni di base */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+section {
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Container dei risultati dei pacchetti */
+#pack-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+/* Container della collezione del giocatore */
+#collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  background-image: url('imaginirot/cartesfondo.png');
+  background-size: 150px;
+  background-position: center;
+  text-align: center;
+}
+
+/* Stile delle carte */
+.card {
+  width: 170px;
+  padding: 10px;
+  margin: 10px; /* Ridotto il margine */
+  border: 1px solid #000;
+  border-radius: 8px;
+  color: #000;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card h4 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card p {
+  font-size: 12px;
+}
+
+/* Sfondo per tipi */
+.card.erba {
+  background-color: #55b700;
+}
+.card.acqua {
+  background-color: #7ad5ff;
+}
+.card.fuoco {
+  background-color: #ff3131;
+}
+.card.elettro {
+  background-color: #ffec3e;
+}
+.card.magico {
+  background-color: #e760ff;
+}
+.card.indifferenti {
+  background-color: #939393;
+}
+
+/* Animazione del bordo */
+@keyframes rainbow-border {
+  0% { box-shadow: 0 0 10px 5px red; }
+  16% { box-shadow: 0 0 10px 5px orange; }
+  32% { box-shadow: 0 0 10px 5px yellow; }
+  48% { box-shadow: 0 0 10px 5px green; }
+  64% { box-shadow: 0 0 10px 5px cyan; }
+  80% { box-shadow: 0 0 10px 5px blue; }
+  100% { box-shadow: 0 0 10px 5px violet; }
+}
+
+.card.ultra {
+  background-image: url("imaginirot/ULTRA.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  color: white;
+  border: 1px solid transparent;
+  animation: rainbow-border 2s linear infinite;
+}
+
+.card-count {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+.card.utilitys {
+  background: url('imaginirot/ingranaggi.png') !important;
+  background-size: cover;
+  border: 5px solid #0400ff;
+  color: white;
+}
+
+  .collection-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+
+  .selezionata {
+    border: 3px solid rgb(0, 255, 229);
+    background-color: #e0ffe0;
+  }
+/* Media query per schermi piccoli */
+@media (max-width: 768px) {
+  #collection {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Lotta</title>
+  <link rel="stylesheet" href="lotta.css">
+  <link rel="icon" href="imaginirot/pokemonrotico.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <a href="/index.html" class="link-gioca">
+    <img src="imaginirot/home.png" style="height: 70px; width:70px;">
+  </a>
+
+  <!-- Mazzo IA -->
+  <div class="sectionTitle">Carte AI in Mano (non visibili)</div>
+  <div>Carte rimanenti nel mazzo AI: <span id="aiDeckCount">20</span></div>
+
+  <!-- Mazzo Giocatore -->
+  <div class="sectionTitle">Carte in Mano (non visibili)</div>
+  <div>Carte rimanenti nel mazzo: <span id="deckCount">20</span></div>
+
+  <div id="aiArea">
+      <div class="sectionTitle">AI - Carta Attiva</div>
+      <div id="aiActive" class="cardsRow"></div>
+
+      <div class="sectionTitle">AI - Panchina</div>
+      <div id="aiBench" class="cardsRow"></div>
+
+      <div class="sectionTitle">Carte AI in Mano (non visibili)</div>
+      <div>Carte rimanenti nel mazzo AI: <span id="aiDeckCount"></span></div>
+  </div>
+
+  <hr />
+
+  <div id="playerArea">
+    <div class="sectionTitle">Tua Carta Attiva</div>
+    <div id="playerActive" class="cardsRow"></div>
+
+    <div class="sectionTitle">Tua Panchina (clicca per sostituire carta attiva)</div>
+    <div id="playerBench" class="cardsRow"></div>
+
+    <div class="sectionTitle">Tua Mano (clicca per giocare/utilizzare)</div>
+    <div id="hand" class="cardsRow"></div>
+
+    <div id="energyDisplay"></div>
+    <label for="energyChoice">Scegli energia da ricaricare: </label>
+    <select id="energyChoice"></select>
+    <button id="endTurnBtn">Termina Turno</button>
+
+    <div>Carte rimanenti nel mazzo: <span id="deckCount"></span></div>
+  </div>
+
+  <div class="card fuoco">FUOCO</div>
+  <div class="card acqua">ACQUA</div>
+  <div class="card erba">ERBA</div>
+  <div class="card elettro">ELETTRO</div>
+  <div class="card magico">MAGICO</div>
+  <div class="card indifferenti">INDIFFERENTI</div>
+  <div class="card ultra">ULTRA</div>
+  <div class="card utilitys">UTILITYS</div>
+
+  <script src="lotta.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

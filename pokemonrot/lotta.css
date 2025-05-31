@@ -1,0 +1,131 @@
+/* --- CONTENITORE GENERALE --- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#playerArea, #aiArea {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  margin: 15px 0 5px;
+  font-size: 18px;
+}
+
+/* --- CONTENITORI CARTE --- */
+.cardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* --- STILE BASE DELLE CARTE --- */
+.card {
+  width: 240px;
+  height: 140px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 1px 2px #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- TIPI BASE COLORATI --- */
+.card.fuoco         { background-color: #ff3131; border: 3px solid #000000; color: black; }
+.card.erba          { background-color: #55b700; border: 3px solid #000000; color: black; }
+.card.acqua         { background-color: #7ad5ff; border: 3px solid #000000; color: black; }
+.card.elettro       { background-color: #ffec3e; border: 3px solid #000000; color: black; }
+.card.magico        { background-color: #e760ff; border: 3px solid #000000; color: black; }
+.card.indifferenti  { background-color: #939393; border: 3px solid #000000; color: black; }
+
+/* --- CARTE SPECIALI --- */
+
+/* Ultra: effetto arcobaleno animato */
+@keyframes rainbow-border {
+  0% { box-shadow: 0 0 10px 2px red; }
+  16% { box-shadow: 0 0 10px 2px orange; }
+  32% { box-shadow: 0 0 10px 2px yellow; }
+  48% { box-shadow: 0 0 10px 2px green; }
+  64% { box-shadow: 0 0 10px 2px cyan; }
+  80% { box-shadow: 0 0 10px 2px blue; }
+  100% { box-shadow: 0 0 10px 2px violet; }
+}
+
+.card.ultra {
+  background-image: url("imaginirot/ULTRA.gif");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border: 2px solid transparent;
+  animation: rainbow-border 2s linear infinite;
+  z-index: 1;
+}
+
+/* Utilitys: ingranaggio + bordo blu */
+.card.utilitys {
+  background-image: url("imaginirot/ingranaggi.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  border: 4px solid #0400ff;
+}
+
+/* Selezionata */
+.selezionata {
+  border: 4px solid #00ffe5;
+  box-shadow: 0 0 15px #00ffe5;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .cardsRow {
+    gap: 10px;
+  }
+
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+}
+
+/* --- CONTROLLI / BOTTONI --- */
+.controls {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+}
