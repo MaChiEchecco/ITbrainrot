@@ -10,121 +10,274 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
-    <nav>
-        <ul class="menu">  
-           <li>
-               
-           </li>
-        </ul>
-    </nav>
-<img src="imagini/info.png" style="width: 200px; height: 200px;">
-<h1 class="grande-titolo">IL TUO ESERCITO per giocare con le carte (simil pokemonrot)</h1>
-<img src="imagini/squadra.png" width="1000" height="500"> </div> 
- <a href="gioco.html" class="link-gioca">GIOCA :gioco di carte</a>  
+<h2>Scopri quale gioco fa per te!</h2>
+<form id="quizForm">
+  <ol>
+    <li>Ti piace ragionare a lungo prima di fare una mossa?
+      <br>
+      <label><input type="radio" name="q1" value="scacchi"> Sì</label>
+      <label><input type="radio" name="q1" value="tiro"> No</label>
+    </li>
 
-<ul id="cardList"></ul>
+    <li>Preferisci i numeri o i colori?
+      <br>
+      <label><input type="radio" name="q2" value="2048"> Numeri</label>
+      <label><input type="radio" name="q2" value="tralalero"> Colori</label>
+    </li>
 
-<div id="cardDetails" style="margin-top: 20px; border: 1px solid black; padding: 10px; display: none;">
-  <h3 id="cardName"></h3>
-  <p id="cardHP"></p>
-  <p id="cardATK"></p>
-  <p id="cardAbility"></p>
-</div>
+    <li>Ti piacciono le sfide veloci?
+      <br>
+      <label><input type="radio" name="q3" value="tetris"> Sì</label>
+      <label><input type="radio" name="q3" value="scacchi"> No</label>
+    </li>
 
-<h2 style="text-align:center;">Tabella date Carte</h2>
-<table id="cardTable" class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">HP</th>
-      <th scope="col">ATK</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+    <li>Preferisci pensare o sparare?
+      <br>
+      <label><input type="radio" name="q4" value="scacchi"> Pensare</label>
+      <label><input type="radio" name="q4" value="tiro"> Sparare</label>
+    </li>
 
-<img src="imagini/info.png" style="width: 200px; height: 200px;">
-<h1 class="grande-titolo">LE TUE PISTOLE per giocare tiro al bersaglio</h1>
-<img src="imagini/pistole.png" style="width: 1500px; height: 150px;">
+    <li>Ti piacciono le carte collezionabili?
+      <br>
+      <label><input type="radio" name="q5" value="pokemonrot"> Sì</label>
+      <label><input type="radio" name="q5" value="carte"> No</label>
+    </li>
 
-<a href="tiroalbersaglio.html" class="link-gioca">GIOCA :tiro al bersaglio</a> 
+    <li>Ti piacciono i giochi con personaggi buffi?
+      <br>
+      <label><input type="radio" name="q6" value="tralalero"> Sì</label>
+      <label><input type="radio" name="q6" value="tetris"> boh</label>
+    </li>
 
-<h1>invece se sei inteliggente gioca a ITscacchiRot</h1>
+    <li>Preferisci giochi già noti o esperienze nuove?
+      <br>
+      <label><input type="radio" name="q7" value="pokemonrot"> Esperienze nuove</label>
+      <label><input type="radio" name="q7" value="scacchi"> Giochi noti</label>
+    </li>
 
-<img src="imagini/scacchi.png" style="width: 200px; height: 200px;">
-<a href="scacchi.html" class="link-gioca">Gioca contro Stockfish</a>
-</div> <h1>oppure se ti piacciono i pokemon prova pokemonrot</h1>
-<img src="imagini/pokemonrotimg.png" style="width: 200px; height: 200px;">
-<a href="/pokemonrot/pokemonrot.html" class="link-gioca">Gioca a pokemonrot(non ancora pronto)</a>
+    <li>Ti piacciono i puzzle matematici?
+      <br>
+      <label><input type="radio" name="q8" value="2048"> molto</label>
+      <label><input type="radio" name="q8" value="tetris"> poco</label>
+    </li>
 
-<h1>invece se sei un matematico gioca a IT2048rot</h1>
-<img src="imagini/2048.png" style="width: 200px; height: 200px;">
-<a href="./IT2048rot/2048.html" class="link-gioca">gioca a it2048rot</a>
+    <li>Vuoi allenare i riflessi?
+      <br>
+      <label><input type="radio" name="q9" value="tiro"> Sì</label>
+      <label><input type="radio" name="q9" value="tralalero"> No</label>
+    </li>
 
-<h1>o se ti senti un tralalero tralala gioca a questo</h1>
-<img src="/2Drot/imagini2Drot/tralalero toy.png" style="width: 200px; height: 200px;">
-<a href="/2Drot/2Drot.html" class="link-gioca">gioca a super tralalero tralala</a>
+    <li>Ti piacciono i Pokémon?
+      <br>
+      <label><input type="radio" name="q10" value="pokemonrot"> Assolutamente</label>
+      <label><input type="radio" name="q10" value="carte"> Non molto</label>
+    </li>
+  </ol>
+  <button type="submit">Scopri il tuo gioco</button>
+</form>
 
-<h1>dimmi bug o cosa migliorare qui sotto</h1>
+<div id="risultatoQuiz" style="margin-top: 20px;"></div>
+
+<nav>
+    <ul class="menu">  
+        <li></li>
+    </ul>
+</nav>
+
+<h2>Scegli un gioco</h2>
+<ol>
+    <li>
+        <img src="imagini/gioco carte.png" alt="Carte" width="50" height="50">
+        <a href="gioco.html" class="link-gioca">GIOCA: gioco di carte (simil pokemonrot)</a>
+    </li>
+    <li>
+        <img src="imagini/pistole.png" alt="Tiro al bersaglio" width="50" height="50">
+        <a href="tiroalbersaglio.html" class="link-gioca">GIOCA: tiro al bersaglio</a>
+    </li>
+    <li>
+        <img src="imagini/scacchi.png" alt="Scacchi" width="50" height="50">
+        <a href="scacchi.html" class="link-gioca">Gioca contro Stockfish</a>
+    </li>
+    <li>
+        <img src="imagini/pokemonrotimg.png" alt="PokemonRot" width="50" height="50">
+        <a href="/pokemonrot/pokemonrot.html" class="link-gioca">Gioca a pokemonrot (non ancora pronto)</a>
+    </li>
+    <li>
+        <img src="imagini/2048.png" alt="2048" width="50" height="50">
+        <a href="/IT2048rot/2048.html" class="link-gioca">Gioca a IT2048rot</a>
+    </li>
+    <li>
+        <img src="imagini/tetris.png" alt="tetris" width="50" height="50">
+        <a href="/tetrisROT/tetris.html" class="link-gioca">Gioca a TetrisROT</a>       
+    </li>
+    <li>
+        <img src="imagini/tralalero toy.png" alt="Tralalero" width="50" height="50">
+        <a href="/2Drot/2Drot.html" class="link-gioca">Gioca a Super Tralalero Tralala</a>
+    </li>
+</ol>
+
+<h1>Dimmi bug o cosa migliorare qui sotto</h1>
 <h1>O</h1>
 <h1>Lascia una recensione</h1>
 
-    <form action="https://formsubmit.co/francescomarfisi0@gmail.com" method="POST">
-       
-        <!-- Redirect opzionale dopo invio -->
-        <input type="hidden" name="_next" value="https://ITbrainrot.github.io/grazie.html">
+<form action="https://formsubmit.co/francescomarfisi0@gmail.com" method="POST" id="recensioneForm">
+    <input type="hidden" name="_next" value="https://ITbrainrot.github.io/grazie.html">
 
-        <div class="form-item">
-            <label for="recensione">La tua recensione:</label>
-            <textarea id="recensione" name="recensione" required></textarea>
-        </div>
+    <div class="form-item">
+        <label for="recensione">La tua recensione:</label>
+        <textarea id="recensione" name="recensione" required></textarea>
+    </div>
 
-        <div class="form-item">
-            <label for="voto">Voto:</label>
-            <select id="voto" name="voto">
-                <option value="5">★★★★★</option>
-                <option value="4">★★★★☆</option>
-                <option value="3">★★★☆☆</option>
-                <option value="2">★★☆☆☆</option>
-                <option value="1">★☆☆☆☆</option>
-            </select>
-        </div>
+    <div class="form-item">
+        <label for="voto">Voto:</label>
+        <select id="voto" name="voto">
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+        </select>
+    </div>
 
-        <div class="form-item">
-            <button type="submit">Invia recensione</button>
-        </div>
-    </form>
-    
+    <div class="form-item">
+        <button type="submit">Invia recensione</button>
+    </div>
+</form>
 
-    <div id="risultato"></div>
+<div id="risultato"></div>
 
+<style>
+  label {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-    <script>
-        const form = document.getElementById("recensioneForm");
-        const risultatoDiv = document.getElementById("risultato");
+  label:hover {
+    background-color: #f0f0f0;
+  }
 
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Previene il ricaricamento della pagina
+  label.selezionato {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+  }
+</style>
 
-            const recensione = document.getElementById("recensione").value;
-            const voto = document.getElementById("voto").value;
+<script>
+// Evidenziazione blu delle risposte selezionate
+document.querySelectorAll('#quizForm input[type="radio"]').forEach((input) => {
+  input.addEventListener('change', function () {
+    const name = this.name;
+    // Rimuove 'selezionato' da tutti i label della stessa domanda
+    document.querySelectorAll(`#quizForm input[name="${name}"]`).forEach((el) => {
+      el.parentElement.classList.remove('selezionato');
+    });
+    // Aggiunge 'selezionato' solo al label cliccato
+    this.parentElement.classList.add('selezionato');
+  });
+});
 
-            // Mostra la recensione
-            risultatoDiv.innerHTML = `
-                <h2>Grazie per la tua recensione!</h2>
-                <p><strong>Recensione:</strong> ${recensione}</p>
-                <p><strong>Voto:</strong> ${"★".repeat(voto)}${"☆".repeat(5 - voto)}</p>
-            `;
+document.getElementById("quizForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-            // Pulisce il form
-            form.reset();
-        });
-    </script>
+  const risultati = {
+    carte: 0,
+    tiro: 0,
+    scacchi: 0,
+    pokemonrot: 0,
+    "2048": 0,
+    tralalero: 0,
+    tetris: 0  // Aggiunto Tetris
+  };
 
+  const formData = new FormData(event.target);
+  for (let [key, value] of formData.entries()) {
+    if (risultati.hasOwnProperty(value)) {
+      risultati[value]++;
+    }
+  }
+
+  // Trova il gioco con il punteggio più alto
+  let giocoFinale = Object.keys(risultati).reduce((a, b) => risultati[a] > risultati[b] ? a : b);
+
+  const giochi = {
+    carte: {
+      nome: "Gioco di Carte",
+      link: "gioco.html",
+      img: "imagini/gioco_carte.png"
+    },
+    tiro: {
+      nome: "Tiro al Bersaglio",
+      link: "tiroalbersaglio.html",
+      img: "imagini/pistole.png"
+    },
+    scacchi: {
+      nome: "ITscacchiRot",
+      link: "scacchi.html",
+      img: "imagini/scacchi.png"
+    },
+    pokemonrot: {
+      nome: "PokemonRot",
+      link: "/pokemonrot/pokemonrot.html",
+      img: "imagini/pokemonrotimg.png"
+    },
+    "2048": {
+      nome: "IT2048Rot",
+      link: "/IT2048rot/2048.html",
+      img: "imagini/2048.png"
+    },
+    tralalero: {
+      nome: "Super Tralalero Tralala",
+      link: "/2Drot/2Drot.html",
+      img: "imagini/tralalero toy.png"
+    },
+    tetris: {  // Dati per Tetris
+      nome: "TetrisROT",
+      link: "/tetrisROT/tetris.html",
+      img: "imagini/tetris.png"
+    }
+  };
+
+  const gioco = giochi[giocoFinale];
+
+  document.getElementById("risultatoQuiz").innerHTML = `
+    <h3>Ti consigliamo: ${gioco.nome}</h3>
+    <a href="${gioco.link}">
+      <img src="${gioco.img}" alt="${gioco.nome}" width="100" height="100"><br>
+      Gioca ora!
+    </a>
+  `;
+});
+
+// Gestione recensione
+const formRecensione = document.getElementById("recensioneForm");
+const risultatoDiv = document.getElementById("risultato");
+
+formRecensione.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const recensione = document.getElementById("recensione").value;
+    const voto = document.getElementById("voto").value;
+
+    risultatoDiv.innerHTML = `
+        <h2>Grazie per la tua recensione!</h2>
+        <p><strong>Recensione:</strong> ${recensione}</p>
+        <p><strong>Voto:</strong> ${"★".repeat(voto)}${"☆".repeat(5 - voto)}</p>
+    `;
+
+    formRecensione.reset();
+});
+</script>
 
 </body>
-</html
+</html>
