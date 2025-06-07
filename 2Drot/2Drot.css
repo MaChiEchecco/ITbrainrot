@@ -1,14 +1,31 @@
 body {
-  margin: 0;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-canvas {
-      border: 1px solid black;
-      background-image: url("imagini2Drot/sfondo.png");
+      margin: 0;
+      overflow: hidden;
+      background: #e0e0e0;
+    }
+
+    canvas {
       display: block;
-      margin: 0 auto;
+      background-image: url("imagini2Drot/cielo.png")
+    }
+
+    #mobileControls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 100;
+    }
+
+    #mobileControls button {
+      font-size: 24px;
+      padding: 10px 20px;
+      touch-action: none;
+      user-select: none;
+      border: none;
+      border-radius: 10px;
+      background-color: #333;
+      color: white;
     }

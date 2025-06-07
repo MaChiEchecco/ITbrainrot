@@ -1,10 +1,14 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 800;
-canvas.height = 300;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight * 0.6; // 60% dell'altezza dello schermo
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas(); // inizializza
 
-const worldWidth = 3600; // esteso
+const worldWidth = 3600;
 
 const playerImage = new Image();
 playerImage.src = "imagini2Drot/tralalero%20tralala.png";
@@ -33,7 +37,6 @@ let cameraX = 0;
 let gameOver = false;
 let gameOverTimer = 0;
 
-// Primo terreno verde
 const groundGreen = {
   x: 0,
   y: 250,
@@ -42,7 +45,6 @@ const groundGreen = {
   color: "green"
 };
 
-// Lava in mezzo
 const groundLava = {
   x: worldWidth / 3,
   y: 250,
@@ -51,7 +53,6 @@ const groundLava = {
   image: lavaImage
 };
 
-// Nuovo terreno verde dopo la lava
 const groundGreen2 = {
   x: (worldWidth / 3) * 2,
   y: 250,
@@ -73,7 +74,7 @@ const obstacles = [
   { x: 2300, y: 210, width: 70, height: 40, color: "black" },
   { x: 2600, y: 210, width: 70, height: 40, color: "violet" },
   { x: 2800, y: 140, width: 50, height: 80, color: "grey" },
-  { x: 3200, y: 100, width: 50, height: 100, color: "gold", isGoal: true }, // Vittoria
+  { x: 3200, y: 100, width: 50, height: 100, color: "gold", isGoal: true },
   { x: 3400, y: 10, width: 10, height: 300, color: "black" },
 ];
 
@@ -95,7 +96,6 @@ function checkCollision(player, obstacle) {
   );
 
   if (collided && obstacle.isGoal && !gameOver) {
-    console.log("Hai vinto!");
     alert("🎉 Hai vinto! 🎉");
     gameOver = true;
   }
@@ -120,7 +120,6 @@ function updatePlayer() {
   player.y += player.dy;
   player.grounded = false;
 
-  // Terreno verde 1
   if (
     player.y + player.height >= groundGreen.y &&
     player.x < groundLava.x
@@ -130,7 +129,6 @@ function updatePlayer() {
     player.grounded = true;
   }
 
-  // Lava
   if (
     player.y + player.height >= groundLava.y &&
     player.x + player.width >= groundLava.x &&
@@ -140,7 +138,6 @@ function updatePlayer() {
     gameOverTimer = Date.now();
   }
 
-  // Terreno verde 2
   if (
     player.y + player.height >= groundGreen2.y &&
     player.x >= groundGreen2.x
@@ -150,10 +147,9 @@ function updatePlayer() {
     player.grounded = true;
   }
 
-  // Collisione con ostacoli
   for (const obs of obstacles) {
     if (checkCollision(player, obs)) {
-      if (obs.isGoal) continue; // evita risolvere la fisica sugli ostacoli di vittoria
+      if (obs.isGoal) continue;
       if (player.y + player.height - player.dy <= obs.y) {
         player.y = obs.y - player.height;
         player.dy = 0;
@@ -165,7 +161,6 @@ function updatePlayer() {
     }
   }
 
-  // Aggiorna camera
   cameraX = player.x - canvas.width / 2;
   if (cameraX < 0) cameraX = 0;
   if (cameraX > worldWidth - canvas.width) cameraX = worldWidth - canvas.width;
@@ -211,6 +206,24 @@ function gameLoop() {
 
 document.addEventListener("keydown", e => keys[e.key] = true);
 document.addEventListener("keyup", e => keys[e.key] = false);
+
+// Touch controls (una volta sola)
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+const jumpBtn = document.getElementById("jumpBtn");
+
+leftBtn.addEventListener("touchstart", () => keys["a"] = true);
+leftBtn.addEventListener("touchend", () => keys["a"] = false);
+
+rightBtn.addEventListener("touchstart", () => keys["d"] = true);
+rightBtn.addEventListener("touchend", () => keys["d"] = false);
+
+jumpBtn.addEventListener("touchstart", () => {
+  if (player.grounded) {
+    player.dy = player.jumpPower;
+    player.grounded = false;
+  }
+});
 
 let imagesLoaded = 0;
 [playerImage, lavaImage].forEach(img => {
