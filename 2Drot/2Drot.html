@@ -6,45 +6,38 @@
   <title>super TRALALERO TRALALA</title>
   <link rel="icon" href="imagini2Drot/TTico.ico" type="image/x-icon" />
 
-  <!-- ✅ Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6DQD2PzY0U2yU5z8bH9I+jT9aR5+l9Z6X0C4y69lBz+0"
-    crossorigin="anonymous"
-  />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Il tuo CSS personalizzato -->
+  <!-- CSS personalizzato -->
   <link rel="stylesheet" href="2Drot.css" />
 </head>
-<body class="bg-light">
+<body>
 
-  <!-- 🔙 Pulsante home -->
+  <!-- Avviso per rotazione solo su mobile verticale -->
+  <div id="rotateWarning">
+    Ruota il dispositivo in orizzontale per giocare! 📱↔️
+  </div>
+
+  <!-- Pulsante home -->
   <a href="../index.html" class="position-absolute m-3">
     <img src="../imagini/home.png" alt="Home" style="height: 70px; width:70px;">
   </a>
 
-  <!-- 🎮 Controlli per mobile -->
-  <div
-    id="mobileControls"
-    class="position-fixed bottom-0 start-50 translate-middle-x d-flex gap-3 mb-3 z-3"
-  >
-    <button id="leftBtn" class="btn btn-dark fs-4 px-3">⬅️</button>
-    <button id="jumpBtn" class="btn btn-dark fs-4 px-3">🔼</button>
-    <button id="rightBtn" class="btn btn-dark fs-4 px-3">➡️</button>
+  <!-- Controlli per mobile -->
+  <div id="mobileControls">
+    <button id="leftBtn">⬅️</button>
+    <button id="jumpBtn">🔼</button>
+    <button id="rightBtn">➡️</button>
   </div>
 
-  <!-- 🖼️ Canvas di gioco -->
-  <canvas id="gameCanvas" width="800" height="400" class="d-block w-100"></canvas>
+  <!-- Canvas di gioco -->
+  <canvas id="gameCanvas"></canvas>
 
-  <!-- ✅ Bootstrap JS (opzionale per dropdown/modali ecc.) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4I2eX/Fm5xUU4yc+TVz5aKxIM+B07jRM"
-    crossorigin="anonymous"
-  ></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- 🎮 Script del gioco -->
+  <!-- Script gioco -->
   <script src="2Drot.js"></script>
 </body>
 </html>
