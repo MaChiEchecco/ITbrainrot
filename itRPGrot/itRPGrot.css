@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  background: black;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+#game {
+  width: 640px;
+  height: 480px;
+  margin: 50px auto;
+  position: relative;
+  border: 2px solid white;
+  overflow: hidden;
+  background: black; /* Sfondo nero, mappa dentro #map */
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 960px;
+  background: url('imaginiRPG/map.png') no-repeat center/cover;
+}
+
+#player {
+  width: 32px;
+  height: 32px;
+  background-image: url('imaginiRPG/player.png');
+  background-size: cover;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 10;
+  user-select: none;
+}
+
+#enemy {
+  width: 32px;
+  height: 32px;
+  background-image: url('imaginiRPG/enemy.png');
+  background-size: cover;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  z-index: 8;
+}
+
+.enemy {
+  width: 32px;
+  height: 32px;
+  background-image: url('imaginiRPG/enemy.png');
+  background-size: cover;
+  position: absolute;
+  z-index: 8;
+}
+
+.weapon {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.weapon.sword {
+  background-image: url('imaginiRPG/sword.png');
+}
+
+.weapon.bow {
+  background-image: url('imaginiRPG/bow.png');
+}
+
+.projectile {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  background-image: url("imaginiRPG/proiettile.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 15;
+  border-radius: 2px;
+}
+
+#inventory {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 150px;
+  background: rgba(199, 152, 11, 0.8);
+  color: white;
+  border: 2px solid rgb(255, 238, 0);
+  padding: 10px;
+  z-index: 100;
+}
+
+#inventory h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#weapon-status {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.link-gioca {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+}
+
+/* 🔴 Barra della vita */
+#health-bar-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 25px;
+  background-color: #ff9500;
+  border: 2px solid #222;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+#health-bar {
+  height: 100%;
+  background-color: red;
+  width: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}

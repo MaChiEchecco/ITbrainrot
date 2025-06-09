@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>itRPGrot</title>
+  <link rel="icon" href="imaginiRPG/icon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="itRPGrot.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="link-gioca">
+    <img src="../imagini/home.png" alt="Home" style="height: 70px; width: 70px;" />
+  </a>
+
+  <!-- Barra della vita -->
+  <div id="health-bar-container">
+    <div id="health-bar"></div>
+  </div>
+
+  <div id="game">
+    <div id="map">
+      <div id="player"></div>
+
+  <div id="map">
+    ...
+    <div class="cover" style="position:absolute; left:400px; top:300px; width:100px; height:100px; background:rgb(30, 0, 255); opacity:0.9;"></div>
+    <!-- altri ripari -->
+  </div>
+
+      <!-- Armi -->
+      <div class="weapon sword" style="top: 300px; left: 200px;"></div>
+      <div class="weapon bow" style="top: 150px; left: 400px;"></div>
+
+      <!-- Nemici -->
+      <div class="enemy" style="top: 500px; left: 500px;"></div>
+      <div class="enemy" style="top: 600px; left: 700px;"></div>
+      <div class="enemy" style="top: 400px; left: 300px;"></div>
+      <div class="enemy" style="top: 700px; left: 400px;"></div>
+    </div>
+  </div>
+
+  <div id="inventory">
+    <h3>Inventario</h3>
+    <div>Arma attiva: <span id="weapon-status">nessuna</span></div>
+  </div>
+
+  <script src="itRPGrot.js"></script>
+</body>
+</html>
